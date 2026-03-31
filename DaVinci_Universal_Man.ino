@@ -15,7 +15,7 @@ int loop_cnt = 0;
 const int display_frequency = 200;
 const int num_weighted_average_samples = 10;
 const float weighted_average_divisor = num_weighted_average_samples * (num_weighted_average_samples + 1) / 2;  // This is the n-th triangle of the weighted average
-const int level_point = 503;
+const int level_point = 512;
 int last_proportion_error = 0;
 const int pid_display_column_width = 2;
 
@@ -61,7 +61,7 @@ void draw_display(float proportion_error, float derivative_error, float intergal
   int p = (int)round(proportion_error);
   int i = (int)round(intergal_error);
   int d = (int)round(derivative_error);
-  snprintf(first_line, sizeof(first_line), "P:%03d I:%03d D:%03d", p, i, d, pid_display_column_width);
+  snprintf(first_line, sizeof(first_line), "P:%04d I:%04d D:%04d", p, i, d, pid_display_column_width);
   snprintf(second_line, sizeof(second_line), "Volts:%5.2f", volts);
   lcd.clear();
   lcd.print(first_line);
